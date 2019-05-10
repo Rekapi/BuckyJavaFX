@@ -23,8 +23,9 @@ public class ChoiceBoxesTut extends Application {
         choiceBox.getItems().add("ham");
         choiceBox.getItems().add("meatballs");
         choiceBox.setValue("Apples");  // set this value as the default value
-        button.setOnAction(event -> getChoice(choiceBox) );
-
+        //button.setOnAction(event -> getChoice(choiceBox) );
+        // Listen for  selection changes
+        choiceBox.getSelectionModel().selectedItemProperty().addListener((v,oldValue,newValue) -> System.out.println(newValue)  ); // without using button
         VBox layout = new VBox(10); // spacing between layout component
         layout.setPadding(new Insets(20,20,20,20));
         layout.getChildren().addAll(choiceBox,button);
