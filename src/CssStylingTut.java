@@ -34,11 +34,13 @@ public class CssStylingTut extends Application {
         // adding email label
         Label emailLabel = new Label("Email Address");
         GridPane.setConstraints(emailLabel,0,1);
+
         // adding email input
         TextField emailInput = new TextField();
         GridPane.setConstraints(emailInput,1,1);
         // Login button
         Button loginBtn = new Button("Log In");
+        loginBtn.getStyleClass().add("button-st");
         GridPane.setConstraints(loginBtn,1,2);
 
         // Sign up button
