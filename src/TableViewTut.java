@@ -59,8 +59,10 @@ public class TableViewTut extends Application {
         quantityInput.setMinWidth(100);
         // the add button
         Button addButton = new Button("Add");
+        addButton.setOnAction(event -> addButtonClicked());
         // the delete button
         Button delButton = new Button("Delete");
+        delButton.setOnAction(event -> delButtonClicked());
 
         HBox hBox = new HBox();
         hBox.setPadding(new Insets(10,10,10,10));
@@ -89,5 +91,23 @@ public class TableViewTut extends Application {
         products.add(new Product("The Notebook DVD",19.99,12));
 
         return products;
+    }
+    // adding button method
+    public void addButtonClicked(){
+        Product product = new Product();
+        product.setName(nameInput.getText());
+        product.setPrice(Double.parseDouble(priceInput.getText()));
+        product.setQuantity(Integer.parseInt(quantityInput.getText()));
+        tableView.getItems().add(product);
+        nameInput.clear();
+        priceInput.clear();
+        quantityInput.clear();
+    }
+    // deleting button  method
+    public void delButtonClicked(){
+        ObservableList<Product> productSelected,allProducts;
+        allProducts = tableView.getItems();
+        productSelected = tableView.getSelectionModel().getSelectedItems();
+        productSelected.forEach(allProducts::remove); // for each product in selected list delete
     }
 }
