@@ -52,10 +52,22 @@ public class MenusTut extends Application {
         CheckMenuItem autoSave = new CheckMenuItem("Enable Auto Save");
         autoSave.setSelected(true); // make it default checked
         helpMenu.getItems().addAll(showLines,autoSave);
+
+        // Lesson 24 - Radio menu items
+        Menu diffMenu = new Menu("Difficulty");
+        ToggleGroup diffToggle = new ToggleGroup();
+        RadioMenuItem easy = new RadioMenuItem("Easy");
+        RadioMenuItem med = new RadioMenuItem("Medium");
+        RadioMenuItem hard = new RadioMenuItem("Hard");
+        // adding them to the menu
+        easy.setToggleGroup(diffToggle);
+        med.setToggleGroup(diffToggle);
+        hard.setToggleGroup(diffToggle);
+        diffMenu.getItems().addAll(easy,med,hard);
         // three dots means that there is a new dialog will be appears - arrows means there is sub menu will appear - nothing means that's it
         // main menu bar
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(fileMenu,editMenu,helpMenu);
+        menuBar.getMenus().addAll(fileMenu,editMenu,helpMenu,diffMenu);
         layout = new BorderPane();
         layout.setTop(menuBar);
         Scene scene = new Scene(layout,400,300);
