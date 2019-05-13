@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -15,6 +17,8 @@ public class TableViewTut extends Application {
     Button button;
     Scene scene;
     TableView<Product> tableView;
+    // Lesson 19 - Adding some controls for adding or deleting items from the table
+    TextField nameInput, priceInput, quantityInput;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,7 +28,7 @@ public class TableViewTut extends Application {
     public void start(Stage primaryStage) throws Exception{
         window =primaryStage;
         window.setTitle("Table View ");
-        window.setResizable(false);
+        //window.setResizable(false);
         // table columns
         // name column
         TableColumn<Product, String> nameColumn = new TableColumn<>("Name"); // the column Address
@@ -38,16 +42,40 @@ public class TableViewTut extends Application {
         TableColumn<Product, String> quantityColumn = new TableColumn<>("Quantity"); // the column Address
         quantityColumn.setMinWidth(50);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+        // name input
+        nameInput = new TextField();
+        nameInput.setPromptText("Name :");
+        nameInput.setMinWidth(100);
+
+        // Price input
+        priceInput = new TextField();
+        priceInput.setPromptText("Price :");
+        priceInput.setMinWidth(100);
+
+        // quantity  input
+        quantityInput = new TextField();
+        quantityInput.setPromptText("Quantity :");
+        quantityInput.setMinWidth(100);
+        // the add button
+        Button addButton = new Button("Add");
+        // the delete button
+        Button delButton = new Button("Delete");
+
+        HBox hBox = new HBox();
+        hBox.setPadding(new Insets(10,10,10,10));
+        hBox.setSpacing(10);
+        hBox.getChildren().addAll(nameInput,priceInput,quantityInput,addButton,delButton);
+
         // adding this stuff to the table
         tableView = new TableView<>();
         tableView.setItems(getProduct());
         tableView.getColumns().addAll(nameColumn,priceColumn,quantityColumn);
 
-
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20,20,20,20));
-        layout.getChildren().addAll(tableView);
-        scene = new Scene(layout,300,300);
+        layout.getChildren().addAll(tableView,hBox);
+        scene = new Scene(layout,700,300);
         window.setScene(scene);
         window.show();
     }
