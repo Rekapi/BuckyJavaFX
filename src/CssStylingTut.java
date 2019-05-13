@@ -48,10 +48,14 @@ public class CssStylingTut extends Application {
         // starting the lesson from here
         // start building our styling sheet - adding new css file
          gridPane.getChildren().addAll(nameLabel,nameInput,emailLabel,emailInput,loginBtn,signBtn);
-        Scene scene = new Scene(gridPane,300,300);
+        Scene scene = new Scene(gridPane,420,600);
         // adding styling sheet to the scene ...
         scene.getStylesheets().add("Viper.css");
         window.setScene(scene);
+        window.setOpacity(1); // setting the opacity of the window ..
+    //    window.setFullScreen(true); // setting the full screen mode- open the window in full screen mode
+    //    window.getFullScreenExitHint();  // setting hint for full screen (escape to exit full screen)
+        window.centerOnScreen(); // open the window in the center if the screen
         window.show();
     }
 }
