@@ -30,6 +30,7 @@ public class CssStylingTut extends Application {
         // adding name input
         TextField nameInput = new TextField();
         GridPane.setConstraints(nameInput,1,0);
+
         // adding email label
         Label emailLabel = new Label("Email Address");
         GridPane.setConstraints(emailLabel,0,1);
