@@ -7,5 +7,14 @@
 .button{
     -fx-background-color: #AB4642;
     -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 10;
+    -fx-background-radius: 5;
+}
+.button-blue{
+    -fx-background-color: #7cafc2;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 5;
+}
+/* make the label text bold*/
+#bold-label{
+    -fx-font-weight: bold;
 }

@@ -4,9 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class CssStylingTut extends Application {
@@ -27,6 +25,7 @@ public class CssStylingTut extends Application {
         gridPane.setVgap(8);
         // adding name label
         Label nameLabel = new Label("User Name ");
+        nameLabel.setId("bold-label");
         GridPane.setConstraints(nameLabel,0,0);
         // adding name input
         TextField nameInput = new TextField();
@@ -40,9 +39,14 @@ public class CssStylingTut extends Application {
         // Login button
         Button loginBtn = new Button("Log In");
         GridPane.setConstraints(loginBtn,1,2);
+
+        // Sign up button
+        Button signBtn = new Button("Sign Up");
+        signBtn.getStyleClass().add("button-blue"); // adding specific style to specific class
+        GridPane.setConstraints(signBtn,1,3);
         // starting the lesson from here
         // start building our styling sheet - adding new css file
-         gridPane.getChildren().addAll(nameLabel,nameInput,emailLabel,emailInput,loginBtn);
+         gridPane.getChildren().addAll(nameLabel,nameInput,emailLabel,emailInput,loginBtn,signBtn);
         Scene scene = new Scene(gridPane,300,300);
         // adding styling sheet to the scene ...
         scene.getStylesheets().add("Viper.css");
